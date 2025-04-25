@@ -1,7 +1,8 @@
-FROM python:slim
+FROM --platform=linux/amd64 python:3.10-slim
 
-ENV PYTHONDONTWRITEBYTECODE = 1 \
-    PYTHONUNBUFFERED = 1
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
 
 WORKDIR /app
 
@@ -12,10 +13,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 COPY . .
 
-RUN pip install --no-cache-dir -e .
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -e .
 
 RUN python pipeline/training_pipeline.py
 
-EXPOSE 5000
+EXPOSE 8080
 
 CMD ["python", "application.py"]
