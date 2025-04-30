@@ -165,6 +165,7 @@ pipeline {
 ## ☁️ Deployment
 
 After the CI/CD pipeline runs successfully, the application is deployed to Google Cloud Run. Access the deployed service via the URL provided by Cloud Run.
+https://hotel-reservation-prediction-704161002025.us-central1.run.app/
 
 ---
 
